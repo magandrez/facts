@@ -16,6 +16,13 @@ defmodule Facts do
         IO.puts("Usage: facts greet <name>")
     end
 
-    System.halt(0)
+    # Don't break mix REPL loop to allow for
+    # testing and developing with the iex REPL
+    # Is this a hack or a common pattern?
+    if Mix.env() == :prod do
+      System.halt(0)
+    else
+      {:ok, self()}
+    end
   end
 end
