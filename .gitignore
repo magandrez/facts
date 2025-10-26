@@ -21,3 +21,6 @@ facts-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Burrito build directory
+burrito_out/
