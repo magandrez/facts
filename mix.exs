@@ -33,15 +33,16 @@ defmodule Facts.MixProject do
   def releases do
     [
       facts: [
-	steps: [:assemble, &Burrito.wrap/1],
-	burrito: [
-	  main_module: Facts,
+        steps: [:assemble, &Burrito.wrap/1],
+        burrito: [
+          main_module: Facts,
           targets: [
             macos: [os: :darwin, cpu: :x86_64],
-            linux: [os: :linux, cpu: :x86_64],
+            linux: [os: :linux, cpu: :x86_64]
           ],
-	  debug: Mix.env() != :prod # Don't run debug for releases
-	]
+          # Don't run debug for releases
+          debug: Mix.env() != :prod
+        ]
       ]
     ]
   end
