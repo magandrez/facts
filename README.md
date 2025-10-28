@@ -5,7 +5,10 @@ A simple CLI to test the waters with Elixir.
 ## Requirements
 
 - [Elixir](https://elixir-lang.org/install.html) ~> 1.18.0
-- [Zig](https://github.com/ziglang/zig/wiki/Install-Zig-from-a-Package-Manager) 0.14.1 (for Burrito to roll a binary).
+- [Zig](https://github.com/ziglang/zig/wiki/Install-Zig-from-a-Package-Manager)
+  0.14.1 (for Burrito to roll a binary).
+- [xz](https://tukaani.org/about.html) (for Burrito to compress
+  artifacts)
 
 ## Setup
 
