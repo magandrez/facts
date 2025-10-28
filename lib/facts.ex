@@ -2,7 +2,11 @@ defmodule Facts do
   @moduledoc """
   Main OTP application entrypoint.
   """
-  def greet(name), do: "Hello, #{name}!"
+
+  def search(_term) do
+
+    :ok
+  end
 
   def start(_, _) do
     # Returning `{:ok, pid}` will prevent the application from halting.
@@ -10,11 +14,11 @@ defmodule Facts do
     args = Burrito.Util.Args.argv()
 
     case args do
-      ["greet", name] ->
-        IO.puts(greet(name))
+      ["search", term] ->
+        IO.puts(search(term))
 
       _ ->
-        IO.puts("Usage: facts greet <name>")
+        IO.puts("Usage: facts search <term>")
     end
 
     # Don't break mix REPL loop to allow for
