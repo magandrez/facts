@@ -3,6 +3,8 @@ defmodule Facts do
   Main OTP application entrypoint.
   """
 
+  @env Application.compile_env(:facts, :env, :prod)
+
   def search(term) do
     results = Req.get!("https://api.wikimedia.org/core/v1/wikipedia/en/search/page?q=#{term}&limit=10").body["pages"]
     Enum.each(results, fn entry -> IO.puts("#{entry["title"]} ---> #{entry["description"]}") end)
@@ -21,10 +23,7 @@ defmodule Facts do
         IO.puts("Usage: facts search <term>")
     end
 
-    # Don't break mix REPL loop to allow for
-    # testing and developing with the iex REPL
-    # Is this a hack or a common pattern?
-    if Mix.env() == :prod do
+    if @env == :prod do
       System.halt(0)
     else
       {:ok, self()}
