@@ -3,9 +3,9 @@ defmodule Facts do
   Main OTP application entrypoint.
   """
 
-  def search(_term) do
-
-    :ok
+  def search(term) do
+    results = Req.get!("https://api.wikimedia.org/core/v1/wikipedia/en/search/page?q=#{term}&limit=10").body["pages"]
+    Enum.each(results, fn entry -> IO.puts("#{entry["title"]} ---> #{entry["description"]}") end)
   end
 
   def start(_, _) do
